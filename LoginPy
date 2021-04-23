@@ -10,20 +10,15 @@ import HtmlTestRunner
 class LoginTest(unittest.TestCase):
 
     @classmethod
-    #Create a setup function
-    #setUp(self) runs before every test method
-    #setUpClass(cls) runs only once before all the test methods
-    # When we use class function, always provide the annotation class method
-    def setUpClass(cls):
-        #cls - variable class. We can name it anything we want. It's not neccessary to name it as cls,
-        #I put them inside setUpClass function
-        #Whatever will be presented as def space will be a part of def function
-        #in python the indentation is important
+    #Creating a setup function
+    
+      def setUpClass(cls):
+       
         cls.driver = webdriver.Chrome(executable_path="")
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
-        #Create a test function. For test function, always start with the word test.
-        # It's important to give meaningful names to our functions to figure out that this is a test for login
+        #Create a test function
+        
     def test_01_login_valid(self):
         #variable self
         driver = self.driver
@@ -45,26 +40,24 @@ class LoginTest(unittest.TestCase):
         driver = self.driver
         driver.get("https://opensource-demo.orangehrmlive.com/")
         #Creating an object for login page and passing the driver instance here.
-        # In the login page, whenever we create the object, this consructor will be called
-        # and this constrcutor accepting driver here
-        login = LoginPage(driver)
+        
+       login = LoginPage(driver)
         #Using Login variable to access all the functions from the login page class
         login.enter_username("Admin1")
         login.enter_password("admin123")
         login.click_login()
-        #Create a screenshot
+        #Creating a screenshot
         driver.get_screenshot_as_file("filename1.png")
         message = driver.find_element_by_id("spanMessage").text
         self.assertEqual(message, "Invalid credentials")
     @classmethod
-    #When we use class function, always provide the annotation class method
-    #Function for tear down. tearDown(self) will run after every test. tearDownClass(cls) will run only once all the tests are completed
-    #We will use tear downclass because we will be closing the browser only once after all the tests are completed
+    
+    #Function for tear down
+    
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
         print("Test Completed")
-#If I write this, so in the cmd instead of using python -m unittest login.py, I can write python and the file name login.py
-#python login.py
+
 if __name__== '__main__':
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output=''))
