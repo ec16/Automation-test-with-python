@@ -1,9 +1,7 @@
-#Creating a class, I can name it anything
+#Creating a class
 class LoginPage():
-#Inside the class, the first thing we have to do - create the constructors.
-#In python we create the constructor by giving the keyword def underscore underscore init.
-# this constructor is called every time that I create an object for this class
-#In the constrctor we will take the argument called driver
+#Creating the constructors inside the class 
+
     def __init__(self,driver):
         self.driver = driver
 #Objects
