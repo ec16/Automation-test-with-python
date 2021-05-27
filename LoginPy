@@ -14,7 +14,7 @@ class LoginTest(unittest.TestCase):
     
       def setUpClass(cls):
        
-        cls.driver = webdriver.Chrome(executable_path="")
+        cls.driver = webdriver.Chrome(executable_path="/home/smart/chromedriver/chromedriver")
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
         #Create a test function
@@ -24,8 +24,8 @@ class LoginTest(unittest.TestCase):
         driver = self.driver
         driver.get("https://opensource-demo.orangehrmlive.com/")
         login = LoginPage(driver)
-        login.enter_username("")
-        login.enter_password("")
+        login.enter_username("Admin")
+        login.enter_password("admin123")
         login.click_login()
         homepage = HomePage(driver)
         homepage.click_welcome()
